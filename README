@@ -1,0 +1,70 @@
+Overview
+========
+
+django-photo-albums is a pluggable django image gallery app.
+
+Image galleries can be attached to any Django model. And thanks to
+django 1.1 url namespaces it is possible to have multiple 'albums' app
+instances (for example, for different models) that use different sets of
+templates, different permission rules, have dedicated integration test suites
+and are available from different urls.
+
+Each image gallery provide functionality for image viewing, editing,
+uploading, uploading entire albums in one zip file, reordering,
+marking/unmarking as main and deleting.
+
+django-photo-albums is an application based on
+django-generic-images (http://bitbucket.org/kmike/django-generic-images/).
+django-photo-albums requires Django >= 1.1 (or svn version with
+url namespaces), setuptools for installation, django-annoying for some utils and
+django-generic-images for image management and advanced admin image uploader.
+django-generic-images and django-annoying will be installed automatically if
+you install django-photo-albums via easy_install  or pip.
+
+django-photo-albums does not provide any thumbnail creation solution because
+there are external django apps (such as sorl-thumbnail) that would do this
+better.
+
+Testing if app instance is integrated correctly (at least that templates
+don't raise exceptions) is easy because base class for integration testcases
+is provided.
+
+License: MIT
+Author: Mikhail Korobov
+
+Installation
+============
+
+$ pip install django-photo-albums
+
+or
+
+$ easy_install django-photo-albums
+
+or
+
+$ hg clone http://bitbucket.org/kmike/django-photo-albums/
+$ cd django-photo-albums
+$ python setup.py install
+
+Then add 'photo_albums' and 'generic_images' to your ``INSTALLED_APPS`` in
+settings.py and run ``./manage.py syncdb`` (syncdb is not needed if
+django-generic-images was already installed).
+
+Note: django-generic-images app provides admin image uploader (see more in
+`django-generic-images docs, http://django-generic-images.googlecode.com/hg/docs/_build/html/index.html#admin).
+For this admin uploader to work ``generic_images`` folder from
+``generic_images/media/`` should be copied to project's ``MEDIA_ROOT``.
+
+Note: django-composition (http://bitbucket.org/daevaorn/django-composition/)
+is required if you want to use ImageCountField or UserImageCountField. Run
+``pip install django-composition`` to install django-composition.
+
+
+Usage
+=====
+
+Full documentation on how to use django-photo-albums can be found here:
+
+http://django-photo-albums.googlecode.com/hg/docs/_build/html/index.html
+
